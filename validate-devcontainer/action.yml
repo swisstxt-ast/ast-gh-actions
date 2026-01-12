@@ -1,6 +1,12 @@
 name: "Validate devcontainer"
 description: "Validates that this repository has a working devcontainer configuration"
 
+inputs:
+  runCmd:
+    description: "Command to run inside the devcontainer to validate it works"
+    required: false
+    default: "true" # The POSIX shell no-op, not the boolean ;)
+
 runs:
   using: "composite"
   steps:
@@ -12,5 +18,4 @@ runs:
       # start it, and run the postCreateCommand.
       uses: devcontainers/ci@8bf61b26e9c3a98f69cb6ce2f88d24ff59b785c6 # v0.3
       with:
-        # TODO(VAST-484): Maybe this isn't even necessary, try it out.
-        workspace-folder: ${{ github.workspace }}
+        runCmd: ${{ inputs.runCmd }}
