@@ -1,0 +1,16 @@
+name: "Validate devcontainer"
+description: "Validates that this repository has a working devcontainer configuration"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout repository
+      uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6
+
+    - name: Validate devcontainer
+      # This action will install the devcontainers CLI, build the container,
+      # start it, and run the postCreateCommand.
+      uses: devcontainers/ci@8bf61b26e9c3a98f69cb6ce2f88d24ff59b785c6 # v0.3
+      with:
+        # TODO(VAST-484): Maybe this isn't even necessary, try it out.
+        workspace-folder: ${{ github.workspace }}
