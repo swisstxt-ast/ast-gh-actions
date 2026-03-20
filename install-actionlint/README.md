@@ -16,7 +16,7 @@ on:
 jobs:
   setup:
     steps:
-      - uses: swisstxt/ast-gh-actions/install-actionlint@v1.0.1
+      - uses: swisstxt-ast/ast-gh-actions/install-actionlint@v1.0.1
         name: Install actionlint
         with:
           actionlint-version: "1.7.7"

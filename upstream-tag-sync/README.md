@@ -44,9 +44,9 @@ jobs:
         with:
           fetch-depth: 1
           token: ${{ steps.app-token.outputs.token }}
-      - uses: swisstxt/ast-gh-actions/upstream-tag-sync@main
+      - uses: swisstxt-ast/ast-gh-actions/upstream-tag-sync@main
         with:
-          target-repo: swisstxt/cloud-foundation-fabric
+          target-repo: swisstxt-ast/cloud-foundation-fabric
           upstream-repo: GoogleCloudPlatform/cloud-foundation-fabric
           github-token: ${{ steps.app-token.outputs.token }}
 ```
@@ -77,9 +77,9 @@ jobs:
         with:
           fetch-depth: 1
           token: ${{ secrets.SERVICE_ACCOUNT_TOKEN }}      # Token to push back to fork
-      - uses: swisstxt/ast-gh-actions/upstream-tag-sync@main
+      - uses: swisstxt-ast/ast-gh-actions/upstream-tag-sync@main
         with:
-          target-repo: swisstxt/cloud-foundation-fabric
+          target-repo: swisstxt-ast/cloud-foundation-fabric
           upstream-repo: GoogleCloudPlatform/cloud-foundation-fabric
           github-token: ${{ secrets.SERVICE_ACCOUNT_TOKEN }}
 ```

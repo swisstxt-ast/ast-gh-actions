@@ -32,7 +32,7 @@ jobs:
         with:
           fetch-depth: 1
           token: ${{ steps.app-token.outputs.token }}
-      - uses: swisstxt/ast-gh-actions/upstream-tag-on-merge@main
+      - uses: swisstxt-ast/ast-gh-actions/upstream-tag-on-merge@main
         with:
           github-token: ${{ steps.app-token.outputs.token }}
 ```
