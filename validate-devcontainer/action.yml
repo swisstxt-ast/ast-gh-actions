@@ -1,0 +1,28 @@
+name: "Validate devcontainer"
+description: "Validates that this repository has a working devcontainer configuration"
+
+inputs:
+  runCmd:
+    description: "Command to run inside the devcontainer to validate it works"
+    required: false
+    default: "true" # The POSIX shell no-op, not the boolean ;)
+
+outputs:
+  runCmdOutput:
+    description: "Output from the runCmd command"
+    value: ${{ steps.validate.outputs.runCmdOutput }}
+
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout repository
+      uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6
+
+    - name: Validate devcontainer
+      id: validate
+      # This action will install the devcontainers CLI, build the container,
+      # start it (running the devcontainer's postCreateCommand etc.),
+      # then the runCmd.
+      uses: devcontainers/ci@8bf61b26e9c3a98f69cb6ce2f88d24ff59b785c6 # v0.3
+      with:
+        runCmd: ${{ inputs.runCmd }}
